@@ -12,6 +12,8 @@ import com.diesgut.singlespringboot.repository.UsuarioJpaRepository;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class UsuarioServiceImp implements UsuarioService {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     UsuarioJpaRepository usuarioJpaRepository;
 
@@ -35,6 +39,7 @@ public class UsuarioServiceImp implements UsuarioService {
     public void defaultUser() {
         Usuario defaultUser = usuarioJpaRepository.findByUserName("diesgut");
         if (defaultUser == null) {
+            logger.debug("Creara el usuario por defecto");
             Persona persona = new Persona();
             persona.setEmail("diego.esgu@gmail.com");
             LocalDate localDate = LocalDate.of(1988, Month.NOVEMBER, 30);
