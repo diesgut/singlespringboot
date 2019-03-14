@@ -28,15 +28,18 @@ public class UsuarioServiceImp implements UsuarioService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
+    //@Autowired
     UsuarioJpaRepository usuarioJpaRepository;
 
-    @Autowired
+    // @Autowired
     PersonaJpaRepository personaJpaRepository;
 
     @Override
     @Transactional
     public void defaultUser() {
+        if (true) {
+            return;
+        }
         Usuario defaultUser = usuarioJpaRepository.findByUserName("diesgut");
         if (defaultUser == null) {
             logger.debug("Creara el usuario por defecto");

@@ -6,11 +6,22 @@
 package com.diesgut.singlespringboot.dao.general.hibernate;
 
 import com.diesgut.singlespringboot.dao.general.PersonaDAO;
+import javax.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Diego
  */
+@Repository
 public class PersonaDAOH implements PersonaDAO {
+
+    @Autowired
+    EntityManager sessionFactory;
+
+    public void PersonaDAOH() {
+
+    }
 
 }
